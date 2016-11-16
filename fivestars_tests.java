@@ -58,7 +58,7 @@ public class fivestars_tests {
 	       Thread.sleep(5000L);
   			}		
   
- // @Test
+  //@Test
   public void verify_check_in() {
 	  dr.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.fivestars.FiveStarsConsumer:id/tv_check_in_card_check_in_text\")").click();//click check in button on carousel
 	  dr.findElementByAndroidUIAutomator("UiSelector().resourceId(\"com.fivestars.FiveStarsConsumer:id/rl_checkin_modal_content_container\")").click();//click on check in pop up modal
@@ -69,10 +69,18 @@ public class fivestars_tests {
 	  "before purchase to get your points.");
 
 	  System.out.println("you are checked in");
-	  
  	  }
-  
-  @Test
+@Test
+ public void verify_accept_bonus_reward_prompt_text_present() {
+	  
+	  WebElement texts = dr.findElement(By.id("com.fivestars.FiveStarsConsumer:id/tv_bonus_rewards_description"));	
+	  String actual_text = texts.getText();
+	  System.out.println(texts.getText());
+	  Assert.assertEquals(actual_text, "Accept bonus rewards to redeem them in-store. We'll send you reminders before they expire.");
+	  System.out.println("prompt to accept bonus reward is present");
+	  
+	  }
+ // @Test
   public void verify_slide_to_accept_bonus_reward() throws Exception {
 	  Thread.sleep(2000);
 	 WebElement seekBar = dr.findElementById("com.fivestars.FiveStarsConsumer:id/sb_swipe_to_claim");
@@ -90,9 +98,7 @@ public class fivestars_tests {
 	 
 
 	  System.out.println("you just claimed your bonus reward"); 
-	 
-	 
-	 
+
  	  }
   
   
